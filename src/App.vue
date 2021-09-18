@@ -15,3 +15,11 @@ export default {
     },
 };
 </script>
+
+<style>
+.hr {
+    border-bottom: 1px solid var(--ion-color-dark-tint);
+    margin: 10px 0;
+    width: 100%;
+}
+</style>

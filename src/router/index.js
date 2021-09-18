@@ -22,6 +22,18 @@ const routes = [
                 path: 'events',
                 component: () => import('../views/EventsListing.vue'),
             },
+            {
+                path: 'job-details',
+                component: () => import('../views/JobDetails.vue'),
+            },
+            {
+                path: 'event-details',
+                component: () => import('../views/EventDetails.vue'),
+            },
+            {
+                path: 'details',
+                component: () => import('../components/Details.vue'),
+            },
         ],
     },
 ];
