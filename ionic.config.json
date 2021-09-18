@@ -1,0 +1,7 @@
+{
+  "name": "portal-to-work-client",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
