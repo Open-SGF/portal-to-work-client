@@ -6,7 +6,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
-            <ion-list v-on:click="foo()">
+            <ion-list v-on:click="() => router.push('/alerts')">
                 <EventListingItem />
             </ion-list>
         </ion-content>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router';
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList } from '@ionic/vue';
 import EventListingItem from '../components/EventListingItem.vue';
 
@@ -28,10 +29,22 @@ export default {
         IonList,
         EventListingItem,
     },
-    methods: {
-        foo() {
-            console.log('hi mum');
-        },
+    setup() {
+        const router = useRouter();
+        return { router };
     },
+    data() {
+        return {
+            events: [
+                {
+                    title: 'foo',
+                    location: 'bar',
+                    info: 'stuff',
+                    date: 'string',
+                },
+            ],
+        };
+    },
+    methods: {},
 };
 </script>
