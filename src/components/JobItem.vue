@@ -1,16 +1,17 @@
 <template>
     <ion-item>
-        <ion-note slot="start">1</ion-note>
+        <ion-note slot="start">{{ this.number }}</ion-note>
         <ion-item-group>
             <ion-label>Patient Transporter</ion-label>
             <ion-note>Test</ion-note>
         </ion-item-group>
-        <ion-icon
-            slot="end"
-            :icon="isFavorite ? heart : heartOutline"
-            color="primary"
-            @click="$emit('favorite-tapped')"
-        ></ion-icon>
+        <ion-button fill="clear" shape="round" slot="end" @click="$emit('favorite-tapped')">
+            <ion-icon
+                slot="end"
+                :icon="isFavorite ? heart : heartOutline"
+                color="primary"
+            ></ion-icon>
+        </ion-button>
     </ion-item>
 </template>
 
@@ -27,13 +28,16 @@ export default {
         IonItemGroup,
     },
     props: {
+        number: Number,
+        title: String,
+        description: String,
         isFavorite: {
             type: Boolean,
             default: false,
         },
     },
-    emits: ['favorite-tapped'],
-    setup() {
+    emits: ['number'],
+    data() {
         return {
             heartOutline,
             heart,

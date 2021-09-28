@@ -17,9 +17,16 @@
             <!-- <GoogleMaps></GoogleMaps> -->
             <!-- Search results -->
             <ion-list class="ion-padding-horizontal">
-                <JobItem> </JobItem>
-                <JobItem> </JobItem>
-                <JobItem> </JobItem>
+                <JobItem
+                    v-for="(item, index) in jobItems"
+                    :key="index"
+                    v-on:favorite-tapped="toggleFavorite"
+                    :isFavorite="favorite"
+                    :number="item.number"
+                    :title="item.title"
+                    :description="item.description"
+                >
+                </JobItem>
             </ion-list>
         </ion-content>
     </ion-page>
@@ -54,10 +61,33 @@ export default {
         IonList,
         JobItem,
     },
-    setup() {
+    data() {
         return {
             filterOutline,
+            favorite: false,
+            jobItems: [
+                {
+                    number: 1,
+                    title: 'job 1',
+                    description: 'lorem ipsum',
+                },
+                {
+                    number: 2,
+                    title: 'job 2',
+                    description: 'lorem ipsum',
+                },
+                {
+                    number: 3,
+                    title: 'job 3',
+                    description: 'lorem ipsum',
+                },
+            ],
         };
+    },
+    methods: {
+        toggleFavorite() {
+            this.favorite = !this.favorite;
+        },
     },
 };
 </script>
