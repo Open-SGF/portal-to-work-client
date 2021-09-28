@@ -1,13 +1,8 @@
 <template>
     <ion-item class="event-listing-item">
-        <ion-avatar class="date-wrapper">
-            <div class="date">
-                <span class="month ion-text-uppercase">Nov</span>
-                <span class="day">12</span>
-            </div>
-        </ion-avatar>
+        <DateIcon :date="date" />
         <ion-note class="text-wrapper">
-            <h4>Job Title</h4>
+            <h4>{{ title }}</h4>
             <h5>Location</h5>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -27,41 +22,29 @@
 </template>
 
 <script>
-import { IonItem, IonAvatar, IonNote } from '@ionic/vue';
+import { IonItem, IonNote } from '@ionic/vue';
+import DateIcon from './DateIcon.vue';
 
 export default {
     name: 'EventListingItem',
     components: {
         IonItem,
-        IonAvatar,
         IonNote,
+        DateIcon,
+    },
+    props: {
+        title: String,
+        date: Date,
+    },
+    methods: {
+        getMonth() {
+            return getThreeLetterMonth(this.date);
+        },
     },
 };
 </script>
 
 <style scoped>
-.date-wrapper {
-    margin-right: 15px;
-}
-
-.date {
-    background: var(--ion-color-primary);
-    color: var(--ion-color-primary-contrast);
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 8px;
-    font-size: 12px;
-    margin-right: 15px;
-}
-
-.month {
-    font-size: 11px;
-}
-
 /* TODO: make sure all paddings/margins create equal whitespace around elements */
 .text-wrapper {
     padding-bottom: 10px;

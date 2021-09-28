@@ -7,7 +7,9 @@
         </ion-header>
         <ion-content :fullscreen="true">
             <ion-list v-on:click="() => router.push('/alerts')">
-                <EventListingItem />
+                <EventListingItem title="Event Title" :date="new Date(2020, 11, 25)" />
+                <EventListingItem title="Event Title 2" :date="new Date()" />
+                <EventListingItem title="Event Title 3" :date="new Date()" />
             </ion-list>
         </ion-content>
     </ion-page>
