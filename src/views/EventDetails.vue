@@ -1,5 +1,5 @@
 <template>
-    <Details :detailsObj="detailsObj"></Details>
+    <Details :heavenlyDetailsObj="detailsObj"></Details>
 </template>
 
 <script>
@@ -13,22 +13,22 @@ export default {
     data() {
         return {
             detailsObj: {
-                title: 'title',
-                company: 'company',
-                address: 'address',
-                buttonText: 'Click Me',
+                title: 'Event Title',
+                company: 'Event Company',
+                address: 'Address',
+                buttonText: 'RSVP',
                 properties: [
                     {
-                        key: 'property one',
-                        value: 'property one details',
+                        key: 'Date',
+                        value: 'Monday, November 4, 2021',
                     },
                     {
-                        key: 'property two',
-                        value: 'property two details',
+                        key: 'Time',
+                        value: '9:30am to 11:30am',
                     },
                     {
-                        key: 'property three',
-                        value: 'property three details',
+                        key: 'Cost',
+                        value: 'Free',
                     },
                 ],
                 details: `Subject for catalogue: file under 'imagination, comma, lack of'. I don't
