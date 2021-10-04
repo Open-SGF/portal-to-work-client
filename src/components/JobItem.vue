@@ -36,7 +36,7 @@ export default {
             default: false,
         },
     },
-    emits: ['number'],
+    emits: ['favorite-tapped'],
     data() {
         return {
             heartOutline,
