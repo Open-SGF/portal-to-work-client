@@ -15,6 +15,10 @@ const routes = [
                 component: () => import('../views/JobsListing.vue'),
             },
             {
+                path: 'jobs/filters',
+                component: () => import('../views/JobFilters.vue'),
+            },
+            {
                 path: 'alerts',
                 component: () => import('../views/Alerts.vue'),
             },
