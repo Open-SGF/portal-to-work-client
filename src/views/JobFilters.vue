@@ -71,6 +71,11 @@ import {
     IonButtons,
     IonBackButton,
     IonIcon,
+    IonLabel,
+    IonSelectOption,
+    IonSelect,
+    IonItem,
+    IonList,
 } from '@ionic/vue';
 import { pencilOutline } from 'ionicons/icons';
 export default {
@@ -84,6 +89,11 @@ export default {
         IonBackButton,
         IonTitle,
         IonIcon,
+        IonLabel,
+        IonSelectOption,
+        IonSelect,
+        IonItem,
+        IonList,
     },
     data() {
         return { pencilOutline };

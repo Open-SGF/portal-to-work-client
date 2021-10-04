@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { IonIcon, IonItem, IonLabel, IonNote, IonItemGroup } from '@ionic/vue';
+import { IonIcon, IonItem, IonLabel, IonNote, IonItemGroup, IonButton } from '@ionic/vue';
 import { heartOutline, heart } from 'ionicons/icons';
 export default {
     name: 'JobItem',
@@ -26,6 +26,7 @@ export default {
         IonIcon,
         IonNote,
         IonItemGroup,
+        IonButton,
     },
     props: {
         number: Number,
