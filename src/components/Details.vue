@@ -19,14 +19,16 @@
                         <p class="ion-no-margin">{{ detailsObj.company }}</p>
                     </ion-col>
                     <ion-col size="auto">
-                        <ion-button size="small">{{ detailsObj.buttonText }}</ion-button>
+                        <ion-button :href="detailsObj.button.link" size="small">{{
+                            detailsObj.button.text
+                        }}</ion-button>
                     </ion-col>
                 </ion-row>
-                <ion-row>{{ detailsObj.address }}</ion-row>
+                <ion-row class="detail-row">{{ detailsObj.address }}</ion-row>
                 <div class="hr"></div>
 
                 <div class="div" v-for="(property, index) in detailsObj.properties" :key="index">
-                    <ion-row class="ion-align-items-center">
+                    <ion-row class="detail-row ion-align-items-center">
                         <ion-col>
                             <p class="ion-no-margin">{{ property.key }}</p>
                         </ion-col>
@@ -37,7 +39,7 @@
                     <div class="hr"></div>
                 </div>
 
-                <ion-row>
+                <ion-row class="paragraph-wrapper">
                     <p>{{ detailsObj.details }}</p>
                 </ion-row>
             </ion-grid>
@@ -82,4 +84,16 @@ export default {
     },
 };
 </script>
-<style scoped></style>
+<style scoped>
+ion-grid {
+    padding: 30px;
+}
+
+.detail-row {
+    margin-top: 30px;
+}
+
+.paragraph-wrapper {
+    padding: 10px;
+}
+</style>

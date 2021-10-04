@@ -16,7 +16,10 @@ export default {
                 title: 'Event Title',
                 company: 'Event Company',
                 address: 'Address',
-                buttonText: 'RSVP',
+                button: {
+                    text: 'RSVP',
+                    link: '/event-details',
+                },
                 properties: [
                     {
                         key: 'Date',
