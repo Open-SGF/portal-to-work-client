@@ -13,6 +13,7 @@ export default {
     data() {
         return {
             detailsObj: {
+                pageTitle: 'pageTitle',
                 title: 'Job Title',
                 company: 'Job Company',
                 address: 'Job Address',

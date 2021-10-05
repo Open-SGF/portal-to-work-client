@@ -2,7 +2,7 @@
     <ion-page>
         <ion-header>
             <ion-toolbar color="primary">
-                <ion-title>{{ details.pageTitle }}</ion-title>
+                <ion-title>{{ detailsObj.pageTitle }}</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
