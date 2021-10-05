@@ -16,7 +16,10 @@ export default {
                 title: 'Job Title',
                 company: 'Job Company',
                 address: 'Job Address',
-                buttonText: 'Apply Now',
+                button: {
+                    text: 'Apply Now',
+                    link: '/job-details',
+                },
                 properties: [
                     {
                         key: 'Salary',
