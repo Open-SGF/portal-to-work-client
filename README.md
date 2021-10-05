@@ -26,9 +26,9 @@ After linting the code, you can serve it to localhost with the following command
 `npm run serve`
 
 For submitting new work to the project, make a new git branch named one of the following:
-    bug-fixes/[description]
-    chores/[description]
-    features/[desription]
+* bug-fixes/[description]
+* chores/[description]
+* features/[desription]
     
 This command will create a new branch:
 `git checkout -b [branchName]`
