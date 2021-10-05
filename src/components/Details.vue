@@ -2,7 +2,7 @@
     <ion-page>
         <ion-header>
             <ion-toolbar color="primary">
-                <ion-title>{{ detailsObj.pageTitle }}</ion-title>
+                <ion-title>{{ pageTitle }}</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
@@ -15,19 +15,17 @@
                 </ion-row>
                 <ion-row class="ion-align-items-center">
                     <ion-col>
-                        <h2 class="ion-no-margin">{{ detailsObj.title }}</h2>
-                        <p class="ion-no-margin">{{ detailsObj.company }}</p>
+                        <h2 class="ion-no-margin">{{ title }}</h2>
+                        <p class="ion-no-margin">{{ company }}</p>
                     </ion-col>
                     <ion-col size="auto">
-                        <ion-button :href="detailsObj.button.link" size="small">{{
-                            detailsObj.button.text
-                        }}</ion-button>
+                        <ion-button :href="button.link" size="small">{{ button.text }}</ion-button>
                     </ion-col>
                 </ion-row>
-                <ion-row class="detail-row">{{ detailsObj.address }}</ion-row>
+                <ion-row class="detail-row">{{ address }}</ion-row>
                 <div class="hr"></div>
 
-                <div class="div" v-for="(property, index) in detailsObj.properties" :key="index">
+                <div class="div" v-for="(property, index) in properties" :key="index">
                     <ion-row class="detail-row ion-align-items-center">
                         <ion-col>
                             <p class="ion-no-margin">{{ property.key }}</p>
@@ -40,7 +38,7 @@
                 </div>
 
                 <ion-row class="paragraph-wrapper">
-                    <p>{{ detailsObj.details }}</p>
+                    <p>{{ details }}</p>
                 </ion-row>
             </ion-grid>
         </ion-content>
@@ -57,12 +55,13 @@ export default {
     },
     props: {
         name: String,
-        heavenlyDetailsObj: Object,
-    },
-    data() {
-        return {
-            detailsObj: this.heavenlyDetailsObj,
-        };
+        pageTitle: String,
+        title: String,
+        company: String,
+        button: Object,
+        address: String,
+        properties: Object,
+        details: String,
     },
 };
 </script>
