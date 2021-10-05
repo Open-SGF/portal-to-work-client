@@ -62,28 +62,16 @@
 </template>
 
 <script>
-import {
-    IonButtons,
-    IonBackButton,
-    IonIcon,
-    IonLabel,
-    IonSelectOption,
-    IonSelect,
-    IonItem,
-    IonList,
-} from '@ionic/vue';
+import { IonButtons, IonBackButton, IonLabel, IonSelectOption, IonSelect } from '@ionic/vue';
 import { pencilOutline } from 'ionicons/icons';
 export default {
     name: 'JobFilters',
     components: {
         IonButtons,
         IonBackButton,
-        IonIcon,
         IonLabel,
         IonSelectOption,
         IonSelect,
-        IonItem,
-        IonList,
     },
     data() {
         return { pencilOutline };

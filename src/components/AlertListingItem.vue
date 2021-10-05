@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { IonItem, IonNote, IonIcon } from '@ionic/vue';
+import { IonNote } from '@ionic/vue';
 import { briefcase } from 'ionicons/icons';
 
 import DateIcon from './DateIcon.vue';
@@ -19,9 +19,7 @@ import DateIcon from './DateIcon.vue';
 export default {
     name: 'AlertListingItem',
     components: {
-        IonItem,
         IonNote,
-        IonIcon,
         DateIcon,
     },
     props: {

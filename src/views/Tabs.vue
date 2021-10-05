@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonRouterOutlet } from '@ionic/vue';
+import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonRouterOutlet } from '@ionic/vue';
 import { ellipse, square, triangle } from 'ionicons/icons';
 
 export default {
@@ -33,7 +33,6 @@ export default {
         IonTabs,
         IonTabBar,
         IonTabButton,
-        IonIcon,
         IonRouterOutlet,
     },
     setup() {

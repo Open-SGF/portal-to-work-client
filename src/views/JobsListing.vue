@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { IonSearchbar, IonFabButton, IonIcon, IonList } from '@ionic/vue';
+import { IonSearchbar, IonFabButton } from '@ionic/vue';
 import { filterOutline } from 'ionicons/icons';
 import JobItem from '../components/JobItem.vue';
 
@@ -42,8 +42,6 @@ export default {
     components: {
         IonSearchbar,
         IonFabButton,
-        IonIcon,
-        IonList,
         JobItem,
     },
     data() {

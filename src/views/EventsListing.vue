@@ -17,13 +17,11 @@
 
 <script>
 import { useRouter } from 'vue-router';
-import { IonList } from '@ionic/vue';
 import EventListingItem from '../components/EventListingItem.vue';
 
 export default {
     name: 'EventListing',
     components: {
-        IonList,
         EventListingItem,
     },
     setup() {
