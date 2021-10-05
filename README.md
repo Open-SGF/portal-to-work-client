@@ -1,28 +1,28 @@
 # portal-to-work-client
 Create a new directory and cd to it.
-Initialize git in it.
+Initialize git in it:
 `git init`
 
-Set this repo as your remote repo.
+Set this repo as your remote repo:
 `git remote add origin git@github.com:Open-SGF/portal-to-work-client.git`
 
-Tell git to link your local main branch to the remote main branch.
+Tell git to link your local main branch to the remote main branch:
 `git branch --set-upstream-to=origin/main main`
 
-Pull down the project's code.
+Pull down the project's code:
 `git pull`
 
-Initiate NPM in the directory
+Initiate NPM in the directory:
 `npm init -y`
 
-Install the NPM dependencies
+Install the NPM dependencies:
 `npm install`
 
 To serve the code to a local viewable website, your code must be properly formatted.
-Format it by running the following.
+Format it by running the following:
 `npm run lint`
 
-After linting the code, you can serve it to localhost with the following command.
+After linting the code, you can serve it to localhost with the following command:
 `npm run serve`
 
 For submitting new work to the project, make a new git branch named one of the following:
@@ -30,7 +30,7 @@ For submitting new work to the project, make a new git branch named one of the f
     chores/[description]
     features/[desription]
     
-This command will create a new branch
+This command will create a new branch:
 `git checkout -b [branchName]`
 
 To push this new branch up to github. You wil have to do this for the first push on that branch:
