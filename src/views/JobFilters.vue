@@ -63,11 +63,6 @@
 
 <script>
 import {
-    IonPage,
-    IonHeader,
-    IonToolbar,
-    IonContent,
-    IonTitle,
     IonButtons,
     IonBackButton,
     IonIcon,
@@ -81,13 +76,8 @@ import { pencilOutline } from 'ionicons/icons';
 export default {
     name: 'JobFilters',
     components: {
-        IonPage,
-        IonHeader,
-        IonToolbar,
-        IonContent,
         IonButtons,
         IonBackButton,
-        IonTitle,
         IonIcon,
         IonLabel,
         IonSelectOption,

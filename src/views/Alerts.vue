@@ -34,17 +34,12 @@
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList } from '@ionic/vue';
+import { IonList } from '@ionic/vue';
 import AlertListingItem from '../components/AlertListingItem.vue';
 
 export default {
     name: 'Alerts',
     components: {
-        IonHeader,
-        IonToolbar,
-        IonTitle,
-        IonContent,
-        IonPage,
         IonList,
         AlertListingItem,
     },
