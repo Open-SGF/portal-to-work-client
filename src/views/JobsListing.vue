@@ -33,32 +33,15 @@
 </template>
 
 <script>
-import {
-    IonPage,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonSearchbar,
-    IonFabButton,
-    IonIcon,
-    IonList,
-} from '@ionic/vue';
+import { IonSearchbar, IonFabButton } from '@ionic/vue';
 import { filterOutline } from 'ionicons/icons';
 import JobItem from '../components/JobItem.vue';
 
 export default {
     name: 'JobListing',
     components: {
-        IonHeader,
-        IonToolbar,
-        IonTitle,
-        IonContent,
-        IonPage,
         IonSearchbar,
         IonFabButton,
-        IonIcon,
-        IonList,
         JobItem,
     },
     data() {

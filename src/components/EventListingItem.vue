@@ -22,13 +22,12 @@
 </template>
 
 <script>
-import { IonItem, IonNote } from '@ionic/vue';
+import { IonNote } from '@ionic/vue';
 import DateIcon from './DateIcon.vue';
 
 export default {
     name: 'EventListingItem',
     components: {
-        IonItem,
         IonNote,
         DateIcon,
     },

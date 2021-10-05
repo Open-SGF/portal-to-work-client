@@ -48,29 +48,11 @@
 </template>
 
 <script>
-import {
-    IonPage,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonGrid,
-    IonRow,
-    IonCol,
-    IonButton,
-} from '@ionic/vue';
+import { IonButton } from '@ionic/vue';
 
 export default {
     name: 'Details',
     components: {
-        IonHeader,
-        IonToolbar,
-        IonTitle,
-        IonContent,
-        IonPage,
-        IonGrid,
-        IonCol,
-        IonRow,
         IonButton,
     },
     props: {

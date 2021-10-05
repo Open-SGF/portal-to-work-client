@@ -16,14 +16,12 @@
 </template>
 
 <script>
-import { IonIcon, IonItem, IonLabel, IonNote, IonItemGroup, IonButton } from '@ionic/vue';
+import { IonLabel, IonNote, IonItemGroup, IonButton } from '@ionic/vue';
 import { heartOutline, heart } from 'ionicons/icons';
 export default {
     name: 'JobItem',
     components: {
-        IonItem,
         IonLabel,
-        IonIcon,
         IonNote,
         IonItemGroup,
         IonButton,
