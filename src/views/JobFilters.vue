@@ -5,16 +5,16 @@
                 <ion-buttons slot="start">
                     <ion-back-button default-href="/jobs" color="light"></ion-back-button>
                 </ion-buttons>
-                <ion-title>Job Search Filter</ion-title>
+                <ion-title class="ion-text-center">Job Search Filter</ion-title>
             </ion-toolbar>
         </ion-header>
-        <ion-content :fullscreen="true">
+        <ion-content class="ion-padding" :fullscreen="true">
             <div class="wrapper">
                 <ion-label class="label">Position</ion-label>
                 <ion-list>
                     <ion-item>
                         <ion-label>Education Level</ion-label>
-                        <ion-select interface="popover">
+                        <ion-select interface="action-sheet">
                             <ion-select-option value="high school">High School</ion-select-option>
                             <ion-select-option value="bachelors"
                                 >Bachelors Degree</ion-select-option
@@ -25,7 +25,7 @@
 
                     <ion-item>
                         <ion-label>Job Types</ion-label>
-                        <ion-select interface="popover">
+                        <ion-select interface="action-sheet">
                             <ion-select-option value="tech">Technology</ion-select-option>
                             <ion-select-option value="bus">Business</ion-select-option>
                             <ion-select-option value="cul">Culinary</ion-select-option>
@@ -46,7 +46,7 @@
 
                     <ion-item>
                         <ion-label>Radius</ion-label>
-                        <ion-select interface="popover">
+                        <ion-select interface="action-sheet">
                             <ion-select-option value="5">5 Miles</ion-select-option>
                             <ion-select-option value="15">15 Miles</ion-select-option>
                             <ion-select-option value="25">25 Miles</ion-select-option>
