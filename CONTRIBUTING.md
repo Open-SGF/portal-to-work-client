@@ -1,5 +1,5 @@
 For submitting new work to the project, make a new git branch named one of the following:
-* bugfixe/[description]
+* bugfix/[description]
 * chore/[description]
 * feature/[description]
 
