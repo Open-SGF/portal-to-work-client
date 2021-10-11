@@ -2,20 +2,18 @@
     <ion-page>
         <ion-header>
             <ion-toolbar color="primary">
-                <ion-title>Jobs Near Me</ion-title>
+                <ion-title class="ion-text-center">Jobs Near Me</ion-title>
             </ion-toolbar>
         </ion-header>
-        <ion-content :fullscreen="true">
-            <!-- search bar -->
+        <ion-content class="ion-padding-vertical" :fullscreen="true">
             <div class="search-bar ion-padding-horizontal">
                 <ion-searchbar class="search"></ion-searchbar>
-                <ion-fab-button router-link="/jobs/filters">
+                <ion-fab-button class="ion-padding" router-link="/jobs/filters">
                     <ion-icon :icon="filterOutline"></ion-icon>
                 </ion-fab-button>
             </div>
             <!-- The map element -->
             <!-- <GoogleMaps></GoogleMaps> -->
-            <!-- Search results -->
             <ion-list class="ion-padding-horizontal">
                 <JobItem
                     v-for="(item, index) in jobItems"
