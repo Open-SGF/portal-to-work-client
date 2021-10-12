@@ -12,6 +12,14 @@
                     <ion-icon :icon="filterOutline"></ion-icon>
                 </ion-fab-button>
             </div>
+            <Map
+                :locations="[
+                    { latitude: -34.397, longitude: 150.644 },
+                    { latitude: -34.297, longitude: 150.644 },
+                    { latitude: -34.297, longitude: 150.444 },
+                    { latitude: -34.297, longitude: 150.244 },
+                ]"
+            ></Map>
             <!-- The map element -->
             <!-- <GoogleMaps></GoogleMaps> -->
             <ion-list class="ion-padding-horizontal">
@@ -34,6 +42,7 @@
 import { IonSearchbar, IonFabButton } from '@ionic/vue';
 import { filterOutline } from 'ionicons/icons';
 import JobItem from '../components/JobItem.vue';
+import Map from '../components/Map.vue';
 
 export default {
     name: 'JobListing',
@@ -41,6 +50,7 @@ export default {
         IonSearchbar,
         IonFabButton,
         JobItem,
+        Map,
     },
     data() {
         return {
