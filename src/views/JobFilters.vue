@@ -14,7 +14,10 @@
                 <ion-list>
                     <ion-item>
                         <ion-label>Education Level</ion-label>
-                        <ion-select interface="action-sheet">
+                        <ion-select
+                            interface="action-sheet"
+                            :interface-options="{ header: 'Education Level' }"
+                        >
                             <ion-select-option value="high school">High School</ion-select-option>
                             <ion-select-option value="bachelors"
                                 >Bachelors Degree</ion-select-option
@@ -25,7 +28,10 @@
 
                     <ion-item>
                         <ion-label>Job Types</ion-label>
-                        <ion-select interface="action-sheet">
+                        <ion-select
+                            interface="action-sheet"
+                            :interface-options="{ header: 'Job Types' }"
+                        >
                             <ion-select-option value="tech">Technology</ion-select-option>
                             <ion-select-option value="bus">Business</ion-select-option>
                             <ion-select-option value="cul">Culinary</ion-select-option>
@@ -46,7 +52,10 @@
 
                     <ion-item>
                         <ion-label>Radius</ion-label>
-                        <ion-select interface="action-sheet">
+                        <ion-select
+                            interface="action-sheet"
+                            :interface-options="{ header: 'Radius' }"
+                        >
                             <ion-select-option value="5">5 Miles</ion-select-option>
                             <ion-select-option value="15">15 Miles</ion-select-option>
                             <ion-select-option value="25">25 Miles</ion-select-option>
