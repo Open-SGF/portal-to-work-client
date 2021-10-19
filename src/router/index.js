@@ -7,6 +7,10 @@ const routes = [
         component: Tabs,
         children: [
             {
+                path: 'edit-address',
+                component: () => import('../views/EditAddress.vue'),
+            },
+            {
                 path: '',
                 redirect: '/jobs',
             },
