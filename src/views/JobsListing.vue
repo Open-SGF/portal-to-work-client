@@ -15,7 +15,11 @@
             <div class="ion-padding-horizontal">
                 <Map
                     class="job-listing-map"
-                    :locations="[{ latitude: -34.397, longitude: 150.644 }]"
+                    :locations="[
+                        { latitude: -34.397, longitude: 150.644 },
+                        { latitude: -33.397, longitude: 152.644 },
+                    ]"
+                    @location-click="mapClick($event)"
                 ></Map>
             </div>
             <!-- The map element -->
@@ -76,6 +80,9 @@ export default {
     methods: {
         toggleFavorite() {
             this.favorite = !this.favorite;
+        },
+        mapClick(location) {
+            console.log(location);
         },
     },
 };

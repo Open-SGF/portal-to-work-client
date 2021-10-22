@@ -3,7 +3,9 @@
 </template>
 
 <script>
+import { throttle } from 'throttle-debounce';
 import { Loader } from '@googlemaps/js-api-loader';
+
 import { GOOGLE_MAPS_API_KEY } from '../config';
 import mapStyles from '../utils/map-styles.json';
 
@@ -15,17 +17,23 @@ const loader = new Loader({
 });
 
 export default {
-    google: null,
-    map: null,
-    markers: [],
-    isMounted: false,
     props: {
         locations: {
             type: Array,
             default: () => [],
         },
     },
+    emits: {
+        locationClick: null,
+    },
+    google: null,
+    map: null,
+    markers: [],
+    isMounted: false,
+    onWindowResizeThrottled: () => {},
     created() {
+        this.$options.onWindowResizeThrottled = throttle(200, this.onWindowResize);
+
         loader.load().then((google) => {
             this.$options.google = google;
             this.initMap();
@@ -39,6 +47,11 @@ export default {
             this.$options.isMounted = true;
             this.initMap();
         });
+
+        window.addEventListener('resize', this.$options.onWindowResizeThrottled);
+    },
+    unmounted() {
+        window.removeEventListener('resize', this.$options.onWindowResizeThrottled);
     },
     methods: {
         initMap() {
@@ -72,6 +85,10 @@ export default {
                     map,
                 });
 
+                marker.addListener('click', () => {
+                    this.onMarkerClick(location);
+                });
+
                 this.$options.markers.push(marker);
 
                 bounds.extend(marker.getPosition());
@@ -87,6 +104,7 @@ export default {
         },
         removeAllMarkers() {
             for (const marker of this.$options.markers) {
+                google.maps.event.clearListeners(marker, 'click');
                 marker.setMap(null);
             }
 
@@ -103,6 +121,24 @@ export default {
             setTimeout(() => {
                 this.waitForMapSize(callback);
             }, 5);
+        },
+        onMarkerClick(location) {
+            this.$emit('locationClick', location);
+        },
+        onWindowResize() {
+            const { markers, map } = this.$options;
+
+            if (map === null || markers.length <= 0) {
+                return;
+            }
+
+            const bounds = new google.maps.LatLngBounds();
+
+            for (const marker of this.$options.markers) {
+                bounds.extend(marker.getPosition());
+            }
+
+            map.fitBounds(bounds);
         },
     },
     watch: {
