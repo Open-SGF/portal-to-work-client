@@ -25,6 +25,3 @@ Read our [Contributing Guide](CONTRIBUTING.md)
 ## Project Resources
 
 - [Designs](https://xd.adobe.com/view/65635d18-db65-46fd-9f00-4c4b25e4d8c4-3030/screen/03330499-a757-43b0-93f4-b055b154bdc4/)
-
-
-
