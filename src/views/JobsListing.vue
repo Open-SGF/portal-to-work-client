@@ -6,15 +6,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding-vertical" :fullscreen="true">
-            <div class="search-bar ion-padding-horizontal">
-                <ion-searchbar placeholder="Search Jobs" class="search"></ion-searchbar>
-                <ion-fab-button class="ion-padding" router-link="/jobs/filters">
-                    <ion-icon :icon="filterOutline"></ion-icon>
-                </ion-fab-button>
-            </div>
-
             <SearchBar :value="searchValue" @handleChange="handleChange($event)" />
-
             <div class="ion-padding-horizontal">
                 <Map
                     class="job-listing-map"
@@ -44,8 +36,6 @@
 </template>
 
 <script>
-import { IonSearchbar, IonFabButton } from '@ionic/vue';
-import { filterOutline } from 'ionicons/icons';
 import JobItem from '../components/JobItem.vue';
 import Map from '../components/Map.vue';
 import SearchBar from '../components/SearchBar.vue';
@@ -53,15 +43,12 @@ import SearchBar from '../components/SearchBar.vue';
 export default {
     name: 'JobListing',
     components: {
-        IonSearchbar,
-        IonFabButton,
         JobItem,
         Map,
         SearchBar,
     },
     data() {
         return {
-            filterOutline,
             favorite: false,
             searchValue: '',
             jobItems: [
@@ -101,15 +88,6 @@ export default {
 </script>
 
 <style scoped>
-.search-bar {
-    width: 100%;
-    display: flex;
-}
-
-.search {
-    width: 100%;
-}
-
 .job-listing-map {
     height: 200px;
 }
