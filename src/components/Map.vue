@@ -19,7 +19,6 @@ export default {
     map: null,
     markers: [],
     isMounted: false,
-    isMapReady: false,
     props: {
         locations: {
             type: Array,
@@ -54,16 +53,12 @@ export default {
                 disableDefaultUI: true,
             });
 
-            google.maps.event.addListenerOnce(this.$options.map, 'idle', () => {
-                this.$options.isMapReady = true;
-
-                this.updateMapMarkers(this.locations);
-            });
+            this.updateMapMarkers(this.locations);
         },
         updateMapMarkers(locations) {
-            const { google, map, isMapReady } = this.$options;
+            const { google, map } = this.$options;
 
-            if (google === null || map === null || !isMapReady) {
+            if (google === null || map === null) {
                 return;
             }
 
@@ -97,16 +92,16 @@ export default {
 
             this.$options.markers = [];
         },
-        waitForMapSize(fn) {
+        waitForMapSize(callback) {
             const height = this.$refs.map.offsetHeight;
 
             if (height > 0) {
-                fn();
+                callback();
                 return;
             }
 
             setTimeout(() => {
-                this.waitForMapSize(fn);
+                this.waitForMapSize(callback);
             }, 5);
         },
     },
