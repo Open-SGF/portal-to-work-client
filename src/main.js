@@ -1,6 +1,4 @@
 import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
 
 import { IonicVue } from '@ionic/vue';
 
@@ -21,6 +19,8 @@ import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 
 import { registerGlobalCompoents } from './global-components';
+import App from './App.vue';
+import router from './router';
 
 /* Theme variables */
 import './theme/variables.css';

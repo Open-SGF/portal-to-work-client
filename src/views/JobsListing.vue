@@ -12,14 +12,12 @@
                     <ion-icon :icon="filterOutline"></ion-icon>
                 </ion-fab-button>
             </div>
-            <Map
-                :locations="[
-                    { latitude: -34.397, longitude: 150.644 },
-                    { latitude: -34.297, longitude: 150.644 },
-                    { latitude: -34.297, longitude: 150.444 },
-                    { latitude: -34.297, longitude: 150.244 },
-                ]"
-            ></Map>
+            <div class="ion-padding-horizontal">
+                <Map
+                    class="job-listing-map"
+                    :locations="[{ latitude: -34.397, longitude: 150.644 }]"
+                ></Map>
+            </div>
             <!-- The map element -->
             <!-- <GoogleMaps></GoogleMaps> -->
             <ion-list class="ion-padding-horizontal">
@@ -91,5 +89,9 @@ export default {
 
 .search {
     width: 100%;
+}
+
+.job-listing-map {
+    height: 200px;
 }
 </style>
