@@ -43,8 +43,6 @@ import algoliasearch from 'algoliasearch';
 import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
 
 // I believe this bit of code pulls down the dataset stored in Algolia's servers
-const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
-const index = client.initIndex('test_portalToWork');
 
 // This data searches the database from Algolia
 // index
@@ -102,8 +100,10 @@ export default {
             this.favorite = !this.favorite;
         },
 
-        queryAlgolia(queryString) {
-            index
+        async queryAlgolia(queryString) {
+            const client = await algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
+            const index = client.initIndex('test_portalToWork');
+            await index
                 .search(queryString, {
                     hitsPerPage: 20,
                     page: 0,
@@ -113,10 +113,10 @@ export default {
                 });
         },
 
-        handleChange(payload) {
+        async handleChange(payload) {
             this.searchValue = payload;
             console.log(this.searchValue);
-            this.queryAlgolia(this.searchValue);
+            await this.queryAlgolia(this.searchValue);
         },
 
         mapClick(location) {
