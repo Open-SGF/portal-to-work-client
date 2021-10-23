@@ -4,6 +4,7 @@
             class="search"
             :value="value"
             @input="handleChange"
+            debounce="1000"
             placeholder="Search Jobs"
         ></ion-searchbar>
         <ion-fab-button class="ion-padding" router-link="/jobs/filters">

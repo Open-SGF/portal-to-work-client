@@ -39,6 +39,33 @@
 import JobItem from '../components/JobItem.vue';
 import Map from '../components/Map.vue';
 import SearchBar from '../components/SearchBar.vue';
+import algoliasearch from 'algoliasearch';
+import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
+
+// I believe this bit of code pulls down the dataset stored in Algolia's servers
+const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
+const index = client.initIndex('test_portalToWork');
+
+// This data searches the database from Algolia
+// index
+//     .search('query string', {
+//         hitsPerPage: 20,
+//         page: 0,
+//     })
+//     .then(({ hits }) => {
+//         console.log(hits);
+//     });
+
+// This bit of code will push data up to the Algolio Database
+// fetch('https://alg.li/doc-saas.json')
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (contacts) {
+//         return index.saveObjects(contacts, {
+//             autoGenerateObjectIDIfNotExist: true,
+//         });
+//     });
 
 export default {
     name: 'JobListing',
@@ -75,9 +102,21 @@ export default {
             this.favorite = !this.favorite;
         },
 
+        queryAlgolia(queryString) {
+            index
+                .search(queryString, {
+                    hitsPerPage: 20,
+                    page: 0,
+                })
+                .then(({ hits }) => {
+                    console.log(hits);
+                });
+        },
+
         handleChange(payload) {
             this.searchValue = payload;
             console.log(this.searchValue);
+            this.queryAlgolia(this.searchValue);
         },
 
         mapClick(location) {
