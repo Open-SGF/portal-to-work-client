@@ -23,8 +23,8 @@
                 <JobItem
                     v-for="(item, index) in jobItems"
                     :key="index"
-                    v-on:favorite-tapped="toggleFavorite"
-                    :isFavorite="favorite"
+                    v-on:favorite-tapped="toggleFavorite(this.jobItems[index])"
+                    :isFavorite="this.jobItems[index].favorite"
                     :number="item.number"
                     :title="item.title"
                     :description="item.description"
@@ -41,18 +41,6 @@ import Map from '../components/Map.vue';
 import SearchBar from '../components/SearchBar.vue';
 import algoliasearch from 'algoliasearch';
 import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
-
-// I believe this bit of code pulls down the dataset stored in Algolia's servers
-
-// This data searches the database from Algolia
-// index
-//     .search('query string', {
-//         hitsPerPage: 20,
-//         page: 0,
-//     })
-//     .then(({ hits }) => {
-//         console.log(hits);
-//     });
 
 // This bit of code will push data up to the Algolio Database
 // fetch('https://alg.li/doc-saas.json')
@@ -74,34 +62,37 @@ export default {
     },
     data() {
         return {
-            favorite: false,
             searchValue: '',
             jobItems: [
                 {
                     number: 1,
                     title: 'job 1',
                     description: 'lorem ipsum',
+                    favorite: false,
                 },
                 {
                     number: 2,
                     title: 'job 2',
                     description: 'lorem ipsum',
+                    favorite: false,
                 },
                 {
                     number: 3,
                     title: 'job 3',
                     description: 'lorem ipsum',
+                    favorite: false,
                 },
             ],
         };
     },
     methods: {
-        toggleFavorite() {
-            this.favorite = !this.favorite;
+        toggleFavorite(key) {
+            key.favorite = !key.favorite;
+            console.log('favorite toggled');
         },
 
         async queryAlgolia(queryString) {
-            const client = await algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
+            const client = await algoliasearch('V51KY9JOFU', '072f0091efa41ec8280ecbf799c7648e');
             const index = client.initIndex('test_portalToWork');
             await index
                 .search(queryString, {
