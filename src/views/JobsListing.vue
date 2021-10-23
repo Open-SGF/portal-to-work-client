@@ -92,7 +92,7 @@ export default {
         },
 
         async queryAlgolia(queryString) {
-            const client = await algoliasearch('V51KY9JOFU', '072f0091efa41ec8280ecbf799c7648e');
+            const client = await algoliasearch('', '');
             const index = client.initIndex('test_portalToWork');
             await index
                 .search(queryString, {
@@ -101,6 +101,24 @@ export default {
                 })
                 .then(({ hits }) => {
                     console.log(hits);
+                    // Pull down JobItems state
+                    const jobItems = [...this.jobItems];
+
+                    // Object.keys(this.props.blocks).map((key) => (
+                    //     <Block key={key} index={key} details={this.props.blocks[key]} />
+                    // ));
+
+                    // Loop through hits, assigning them to JobItems in state
+                    for (let i = 0; i < 3; i++) {
+                        jobItems[i].number = i;
+                        jobItems[i].title = hits[i].brand;
+                        jobItems[i].description = hits[i].description;
+                        jobItems[i].favorite = false;
+                    }
+
+                    this.jobItems = [];
+                    this.jobItems = [...jobItems];
+                    console.log(this.jobItems);
                 });
         },
 

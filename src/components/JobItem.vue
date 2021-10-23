@@ -1,9 +1,9 @@
 <template>
     <ion-item>
-        <ion-note slot="start">{{ this.number }}</ion-note>
+        <ion-note slot="start">{{ number }}</ion-note>
         <ion-item-group>
-            <ion-label>Patient Transporter</ion-label>
-            <ion-note>Test</ion-note>
+            <ion-label>{{ title }}</ion-label>
+            <ion-note>{{ description }}</ion-note>
         </ion-item-group>
         <ion-button fill="clear" shape="round" slot="end" @click="$emit('favorite-tapped')">
             <ion-icon
