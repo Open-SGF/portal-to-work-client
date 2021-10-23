@@ -4,6 +4,7 @@
             class="search"
             :value="value"
             @input="handleChange"
+            @click="handleClick"
             debounce="1000"
             placeholder="Search Jobs"
         ></ion-searchbar>
@@ -38,6 +39,9 @@ export default {
     methods: {
         handleChange(e) {
             this.$emit('handleChange', e.target.value);
+        },
+        handleClick(e) {
+            this.$emit('handleClick', e.target.value);
         },
     },
 };

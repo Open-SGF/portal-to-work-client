@@ -56,16 +56,12 @@ const generateDummyData = () => {
 
     const generateCoord = (start) => {
         const posOrNeg = Math.random() > 0.5 ? -1 : 1;
-        console.log(posOrNeg);
-        console.log(typeof posOrNeg);
-        console.log(typeof start);
-        console.log(typeof Math.random());
-        console.log(Number(start + Math.random * posOrNeg));
-
-        return start + Math.random * posOrNeg;
+        const addition = Math.random() * 0.01 * posOrNeg;
+        const roundedAddition = Math.round(addition * 1000000) / 1000000;
+        return start + roundedAddition;
     };
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2000; i++) {
         let title = `${titlePrefixes[generateIndex(titlePrefixes.length)]} ${
             titleRoles[generateIndex(titleRoles.length)]
         }`;
