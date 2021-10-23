@@ -41,6 +41,7 @@ import Map from '../components/Map.vue';
 import SearchBar from '../components/SearchBar.vue';
 import algoliasearch from 'algoliasearch';
 import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
+import generateDummyData from '../generateDummyData';
 
 // This bit of code will push data up to the Algolio Database
 // fetch('https://alg.li/doc-saas.json')
@@ -52,6 +53,8 @@ import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
 //             autoGenerateObjectIDIfNotExist: true,
 //         });
 //     });
+
+// generateDummyData();
 
 export default {
     name: 'JobListing',
@@ -65,19 +68,19 @@ export default {
             searchValue: '',
             jobItems: [
                 {
-                    number: 1,
+                    number: 0,
                     title: 'job 1',
                     description: 'lorem ipsum',
                     favorite: false,
                 },
                 {
-                    number: 2,
+                    number: 1,
                     title: 'job 2',
                     description: 'lorem ipsum',
                     favorite: false,
                 },
                 {
-                    number: 3,
+                    number: 2,
                     title: 'job 3',
                     description: 'lorem ipsum',
                     favorite: false,
@@ -93,7 +96,14 @@ export default {
 
         async queryAlgolia(queryString) {
             const client = await algoliasearch('', '');
-            const index = client.initIndex('test_portalToWork');
+            const index = client.initIndex('test_portal-to-work');
+
+            const dummyData = generateDummyData();
+
+            await index.saveObjects(dummyData, {
+                autoGenerateObjectIDIfNotExist: true,
+            });
+
             await index
                 .search(queryString, {
                     hitsPerPage: 20,
@@ -102,18 +112,20 @@ export default {
                 .then(({ hits }) => {
                     console.log(hits);
                     // Pull down JobItems state
-                    const jobItems = [...this.jobItems];
+                    let jobItems = [];
 
                     // Object.keys(this.props.blocks).map((key) => (
                     //     <Block key={key} index={key} details={this.props.blocks[key]} />
                     // ));
 
                     // Loop through hits, assigning them to JobItems in state
-                    for (let i = 0; i < 3; i++) {
-                        jobItems[i].number = i;
-                        jobItems[i].title = hits[i].brand;
-                        jobItems[i].description = hits[i].description;
-                        jobItems[i].favorite = false;
+                    for (let i = 0; i < hits.length; i++) {
+                        let newItem = [];
+                        newItem.number = i;
+                        newItem.title = hits[i].brand;
+                        newItem.description = hits[i].description;
+                        newItem.favorite = false;
+                        jobItems.push(newItem);
                     }
 
                     this.jobItems = [];
