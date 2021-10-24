@@ -118,7 +118,7 @@ export default {
         },
 
         async queryAlgolia(queryString) {
-            const client = algoliasearch('V51KY9JOFU', 'cdbca8b654241db410c5b28240d72439');
+            const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
             const index = client.initIndex('test_portal-to-work');
 
             await index
