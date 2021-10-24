@@ -21,13 +21,6 @@
                     @location-click="mapClick($event)"
                 ></Map>
             </div>
-            <!-- <div class="ion-padding-horizontal">
-                <Map
-                    class="job-listing-map"
-                    :locations="this.mapPins"
-                    @location-click="mapClick($event)"
-                ></Map>
-            </div> -->
             <!-- The map element -->
             <!-- <GoogleMaps></GoogleMaps> -->
             <ion-list class="ion-padding-horizontal">
@@ -52,13 +45,6 @@ import Map from '../components/Map.vue';
 import SearchBar from '../components/SearchBar.vue';
 import algoliasearch from 'algoliasearch';
 import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
-// import generateDummyData from '../generateDummyData';
-
-// This bit of code will push data up to the Algolio Database
-// const dummyData = generateDummyData();
-// await index.saveObjects(dummyData, {
-//     autoGenerateObjectIDIfNotExist: true,
-// });
 
 export default {
     name: 'JobListing',
@@ -96,17 +82,44 @@ export default {
     methods: {
         toggleFavorite(key) {
             key.favorite = !key.favorite;
-            console.log('favorite toggled');
+        },
+
+        handleChange(payload) {
+            this.searchValue = payload;
+        },
+
+        mapClick(location) {
+            console.log(location);
+        },
+
+        captureHits(hits) {
+            let jobItems = [];
+            let mapPins = [];
+
+            for (let i = 0; i < hits.length; i++) {
+                let newItem = [];
+                let newPin = [];
+
+                newItem.number = i;
+                newItem.title = hits[i].title;
+                newItem.description = hits[i].description;
+                newItem.favorite = false;
+                newPin.latitude = hits[i].location.lat;
+                newPin.longitute = hits[i].location.long;
+
+                jobItems.push(newItem);
+                mapPins.push(newPin);
+            }
+
+            this.mapPins = new Array();
+            this.mapPins = [...mapPins];
+            this.jobItems = [];
+            this.jobItems = [...jobItems];
         },
 
         async queryAlgolia(queryString) {
-            const client = await algoliasearch('', '');
+            const client = algoliasearch('V51KY9JOFU', 'cdbca8b654241db410c5b28240d72439');
             const index = client.initIndex('test_portal-to-work');
-
-            // const dummyData = generateDummyData();
-            // await index.saveObjects(dummyData, {
-            //     autoGenerateObjectIDIfNotExist: true,
-            // });
 
             await index
                 .search(queryString, {
@@ -114,50 +127,16 @@ export default {
                     page: 0,
                 })
                 .then(({ hits }) => {
-                    console.log(hits);
-                    let jobItems = [];
-                    let mapPins = [];
-
-                    for (let i = 0; i < hits.length; i++) {
-                        let newItem = [];
-                        let newPin = [];
-
-                        newItem.number = i;
-                        newItem.title = hits[i].title;
-                        newItem.description = hits[i].description;
-                        newItem.favorite = false;
-                        newPin.latitude = hits[i].location.lat;
-                        newPin.longitute = hits[i].location.long;
-
-                        jobItems.push(newItem);
-                        mapPins.push(newPin);
-                    }
-
-                    this.jobItems = [];
-                    this.jobItems = [...jobItems];
-                    this.mapPins = [];
-                    this.mapPins = [...mapPins];
-                    console.log(this.jobItems);
+                    this.captureHits(hits);
                 });
         },
 
-        handleChange(payload) {
-            this.searchValue = payload;
-            console.log(this.searchValue);
-        },
-
-        async handleClick(payload) {
+        async handleClick() {
             await this.queryAlgolia(this.searchValue);
-            console.log('click');
-        },
-
-        mapClick(location) {
-            console.log(location);
         },
     },
 };
 </script>
-
 <style scoped>
 .job-listing-map {
     height: 200px;

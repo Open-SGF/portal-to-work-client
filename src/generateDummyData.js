@@ -1,3 +1,10 @@
+// This bit of code will push data up to the Algolio Database
+// import generateDummyData from '../generateDummyData';
+// const dummyData = generateDummyData();
+// await index.saveObjects(dummyData, {
+//     autoGenerateObjectIDIfNotExist: true,
+// });
+
 const generateDummyData = () => {
     const jobsDB = [];
 
@@ -54,27 +61,35 @@ const generateDummyData = () => {
 
     const generateIndex = (range) => Math.round(Math.random() * range);
 
+    function preciseRound(n, d) {
+        let mult = 10 ** d;
+        return Math.floor(n * mult) / mult;
+    }
+
     const generateCoord = (start) => {
         const posOrNeg = Math.random() > 0.5 ? -1 : 1;
         const addition = Math.random() * 0.01 * posOrNeg;
-        const roundedAddition = Math.round(addition * 1000000) / 1000000;
-        return start + roundedAddition;
+        return start + preciseRound(addition, 6);
     };
 
-    for (let i = 0; i < 2000; i++) {
+    for (let i = 0; i < 1000; i++) {
         let title = `${titlePrefixes[generateIndex(titlePrefixes.length)]} ${
             titleRoles[generateIndex(titleRoles.length)]
         }`;
 
         let description = `A description for ${title}`;
+        let lat = Math.floor(generateCoord(37.210388) * 1000000) / 1000000;
+        let lon = Math.floor(generateCoord(-93.297256) * 1000000) / 1000000;
+
+        console.log(`lat:${lat}, lon:${lon}`);
 
         let newJob = {
             title: title,
             description: description,
             category: `${categories[generateIndex(categories.length)]}`,
             location: {
-                lat: generateCoord(37.210388),
-                long: generateCoord(-93.297256),
+                lat: lat,
+                long: lon,
             },
             salary: generateIndex(200000),
             datePosted: '',
