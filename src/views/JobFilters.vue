@@ -45,7 +45,7 @@
             <div class="wrapper">
                 <ion-label class="label">Travel</ion-label>
                 <ion-list>
-                    <ion-item router-link="/edit-address">
+                    <ion-item router-link="/edit-user-location">
                         <ion-label>Edit Location</ion-label>
                         <ion-icon :icon="pencilOutline"></ion-icon>
                     </ion-item>
