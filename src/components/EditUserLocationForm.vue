@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    name: 'EditAddressForm',
+    name: 'EditUserLocationForm',
 };
 </script>
 

@@ -16,7 +16,7 @@
 
 <script>
 import { IonButtons, IonBackButton } from '@ionic/vue';
-import EditUserLocationForm from '../components/EditAddressForm';
+import EditUserLocationForm from '../components/EditUserLocationForm.vue';
 
 export default {
     name: 'EditUserLocation',

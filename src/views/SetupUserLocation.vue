@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import EditUserLocationForm from '../components/EditAddressForm';
+import EditUserLocationForm from '../components/EditUserLocationForm.vue';
 
 export default {
     components: {
