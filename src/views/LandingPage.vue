@@ -2,7 +2,7 @@
     <ion-page>
         <ion-grid class="grid">
             <ion-row class="jobLogo">
-                <img src="https://via.placeholder.com/350x150" alt="MoJobs Logo" />
+                <img src="/assets/moJobsLogo.png" alt="MoJobs Logo" />
             </ion-row>
             <ion-row class="captcha">
                 <div class="g-recaptcha">
@@ -69,5 +69,7 @@ export default {
     padding-bottom: 40px;
     display: flex;
     justify-content: center;
+    width: 300px;
+    height: auto;
 }
 </style>
