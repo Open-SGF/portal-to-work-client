@@ -62,13 +62,15 @@ export default {
             }
 
             this.$options.map = new google.maps.Map(this.$refs.map, {
+                center: { lat: 37.209, lng: -93.2923 },
+                zoom: 9,
                 styles: mapStyles,
                 disableDefaultUI: true,
             });
 
             this.updateMapMarkers(this.locations);
         },
-        updateMapMarkers(locations) {
+        updateMapMarkers(locations = []) {
             const { google, map } = this.$options;
 
             if (google === null || map === null) {
@@ -76,6 +78,10 @@ export default {
             }
 
             this.removeAllMarkers();
+
+            if (locations.length <= 0) {
+                return;
+            }
 
             const bounds = new google.maps.LatLngBounds();
 

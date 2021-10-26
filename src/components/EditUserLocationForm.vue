@@ -6,21 +6,67 @@
                     Find jobs near you, using your current location or current address.
                 </ion-text>
             </div>
-            <ion-button color="tertiary" class="use-location">Use Current Location</ion-button>
+            <ion-button color="tertiary" class="use-location" @click="getBrowserLocation()"
+                >Use Current Location</ion-button
+            >
             <hr />
             <div class="ion-text-left">
                 <ion-note>Street Address</ion-note>
                 <ion-searchbar class="address-line"></ion-searchbar>
             </div>
-            <ion-img src="https://via.placeholder.com/300x110" alt="map" />
+            <Map class="map" :locations="mapLocations"></Map>
             <ion-button>Continue</ion-button>
         </div>
     </div>
 </template>
 
 <script>
+import { IonText, IonButton, IonNote, IonSearchbar } from '@ionic/vue';
+import Map from './Map.vue';
+
 export default {
     name: 'EditUserLocationForm',
+    components: {
+        IonText,
+        IonButton,
+        IonNote,
+        IonSearchbar,
+        Map,
+    },
+    data() {
+        return {
+            currentLocation: null,
+        };
+    },
+    computed: {
+        mapLocations() {
+            if (!this.currentLocation) {
+                return [];
+            }
+
+            return [this.currentLocation];
+        },
+    },
+    methods: {
+        getBrowserLocation() {
+            if (!navigator.geolocation) {
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(this.onGetPosition, this.onGetPositionError, {
+                enableHighAccuracy: true,
+            });
+        },
+        onGetPosition(position) {
+            this.currentLocation = {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude,
+            };
+        },
+        onGetPositionError(error) {
+            console.log(error);
+        },
+    },
 };
 </script>
 
@@ -52,5 +98,9 @@ hr {
 
 .address-line {
     height: 48px;
+}
+
+.map {
+    height: 200px;
 }
 </style>
