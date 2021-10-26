@@ -1,17 +1,10 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import Tabs from '../views/Tabs.vue';
-import LandingPage from '../views/LandingPage.vue';
 
 const routes = [
     {
-        path: '/',
-        component: LandingPage,
-        children: [
-            {
-                path: 'landing',
-                component: () => import('../views/LandingPage.vue'),
-            },
-        ],
+        path: '/landing',
+        component: () => import('../views/LandingPage.vue'),
     },
     {
         path: '/',

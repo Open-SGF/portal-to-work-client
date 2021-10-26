@@ -1,7 +1,7 @@
 <template>
     <ion-page>
         <ion-grid class="grid">
-            <ion-row class="jobLogo">
+            <ion-row class="job-logo">
                 <img src="/assets/moJobsLogo.png" alt="MoJobs Logo" />
             </ion-row>
             <ion-row class="captcha">
@@ -67,7 +67,7 @@ export default {
     justify-content: center;
 }
 
-.jobLogo {
+.job-logo {
     padding-bottom: 40px;
     display: flex;
     justify-content: center;

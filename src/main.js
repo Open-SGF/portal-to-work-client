@@ -27,8 +27,6 @@ import router from './router';
 /* Theme variables */
 import './theme/variables.css';
 
-console.log(RECAPTCHA_SITE_KEY);
-
 const app = createApp(App)
     .use(IonicVue, { mode: 'md' })
     .use(VueRecaptcha, {
