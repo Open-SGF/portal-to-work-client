@@ -3,6 +3,10 @@ import Tabs from '../views/Tabs.vue';
 
 const routes = [
     {
+        path: '/landing',
+        component: () => import('../views/LandingPage.vue'),
+    },
+    {
         path: '/',
         component: Tabs,
         children: [

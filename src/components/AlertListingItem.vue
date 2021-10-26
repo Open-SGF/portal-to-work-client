@@ -89,7 +89,6 @@ ion-icon {
     width: 20%;
     font-size: 40px;
     margin-right: 20px;
-    /*Not sure if this is the best way to align this*/
     margin-left: -10px;
 }
 </style>

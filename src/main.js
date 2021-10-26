@@ -17,6 +17,8 @@ import '@ionic/vue/css/text-alignment.css';
 import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
+import { RECAPTCHA_SITE_KEY } from './config.js';
+import VueRecaptcha from 'vue3-recaptcha-v2';
 
 import { registerGlobalCompoents } from './global-components';
 import App from './App.vue';
@@ -25,7 +27,13 @@ import router from './router';
 /* Theme variables */
 import './theme/variables.css';
 
-const app = createApp(App).use(IonicVue, { mode: 'md' }).use(router);
+const app = createApp(App)
+    .use(IonicVue, { mode: 'md' })
+    .use(VueRecaptcha, {
+        siteKey: RECAPTCHA_SITE_KEY,
+        alterDomain: false, // default: false
+    })
+    .use(router);
 
 registerGlobalCompoents(app);
 
