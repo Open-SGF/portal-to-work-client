@@ -22,6 +22,7 @@
 <script>
 import { ref } from 'vue';
 import { VueRecaptcha, useRecaptcha } from 'vue3-recaptcha-v2';
+import { useRouter } from 'vue-router';
 
 export default {
     name: 'recaptcha',
@@ -30,9 +31,10 @@ export default {
         // Reset Recaptcha
         const { resetRecaptcha } = useRecaptcha();
         const recaptchaWidget = ref(null);
+        const router = useRouter();
 
         const callbackVerify = (response) => {
-            console.log(response);
+            router.push('/jobs');
         };
         const callbackExpired = () => {
             console.log('expired!');

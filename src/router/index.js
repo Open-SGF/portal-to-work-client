@@ -5,6 +5,16 @@ import LandingPage from '../views/LandingPage.vue';
 const routes = [
     {
         path: '/',
+        component: LandingPage,
+        children: [
+            {
+                path: 'landing',
+                component: () => import('../views/LandingPage.vue'),
+            },
+        ],
+    },
+    {
+        path: '/',
         component: Tabs,
         children: [
             {
@@ -34,16 +44,6 @@ const routes = [
             {
                 path: 'event-details',
                 component: () => import('../views/EventDetails.vue'),
-            },
-        ],
-    },
-    {
-        path: '/',
-        component: LandingPage,
-        children: [
-            {
-                path: 'landing',
-                component: () => import('../views/LandingPage.vue'),
             },
         ],
     },
