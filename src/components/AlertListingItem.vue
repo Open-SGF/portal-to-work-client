@@ -39,6 +39,7 @@ export default {
 <style scoped>
 .date-wrapper {
     width: 20%;
+    justify-content: center;
 }
 
 .date {
@@ -49,7 +50,6 @@ export default {
     width: 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding-top: 8px;
     font-size: 12px;
 }
@@ -88,7 +88,5 @@ h5 {
 ion-icon {
     width: 20%;
     font-size: 40px;
-    margin-right: 20px;
-    margin-left: -10px;
 }
 </style>
