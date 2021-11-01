@@ -13,7 +13,6 @@
 -   Install dependencies with npm
     -   `npm install`
 -   Aquire API keys
-
     -   Get a reCaptcha key
         -   Go to https://www.google.com/recaptcha/admin/create#whyrecaptcha
         -   Sign up for a reCaptcha v2 API key
@@ -31,7 +30,6 @@
         -   Click the blue save button at the bottom
         -   Copy the API from the credentials page
         -   Paste the API key in the .env folder within the quotes of VUE_APP_GOOGLE_MAPS_API_KEY=""
-
 -   Run the project
     -   `npm run serve`
     -   Open the url this command provides in the browser
