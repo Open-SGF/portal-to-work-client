@@ -1,13 +1,12 @@
-For submitting new work to the project, make a new git branch named one of the following:
-* bugfix/[description]
-* chore/[description]
-* feature/[description]
+# Contributing
 
-This command will create a new branch:
-`git checkout -b [branchName]`
-
-To push this new branch up to github. You wil have to do this for the first push on that branch:
-`git push --set-upstream origin [branchName]`
-
-For any following pushes, you can just do:
-`git push`
+- For submitting new work to the project, create a new branch with one of the following naming formats
+  - bugfix/[description]
+  - chore/[description]
+  - feature/[description]
+- Before making and pushing commits be sure to lint your code for any potential errors
+  - `npm run lint`
+- Many errors (especially formatting errors) can be fixed automatically
+  - `npm run lint -- --fix`
+- When your work is ready to submit ensure everything is pushed up and then open a [pull request](https://github.com/Open-SGF/portal-to-work-client/pulls).
+- After submitting, an admin will review and provide feedback/ask for changes or merge it in.

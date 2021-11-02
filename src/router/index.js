@@ -3,6 +3,14 @@ import Tabs from '../views/Tabs.vue';
 
 const routes = [
     {
+        path: '/landing',
+        component: () => import('../views/LandingPage.vue'),
+    },
+    {
+        path: '/setup-user-location',
+        component: () => import('../views/SetupUserLocation.vue'),
+    },
+    {
         path: '/',
         component: Tabs,
         children: [
@@ -21,6 +29,10 @@ const routes = [
             {
                 path: 'jobs/filters',
                 component: () => import('../views/JobFilters.vue'),
+            },
+            {
+                path: '/edit-user-location',
+                component: () => import('../views/EditUserLocation.vue'),
             },
             {
                 path: 'alerts',
