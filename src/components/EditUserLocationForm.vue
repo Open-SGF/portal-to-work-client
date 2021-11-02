@@ -9,12 +9,17 @@
             <ion-button color="tertiary" class="use-location" @click="getBrowserLocation()"
                 >Use Current Location</ion-button
             >
-            <hr />
+            <div class="option-divider">
+                <div class="divide-line"><hr /></div>
+                <div class="or"><p>or</p></div>
+            </div>
             <div class="ion-text-left">
                 <ion-note>Street Address</ion-note>
                 <ion-searchbar class="address-line"></ion-searchbar>
             </div>
-            <Map class="map" :locations="mapLocations"></Map>
+            <div class="map-container">
+                <Map class="map" :locations="mapLocations"></Map>
+            </div>
             <ion-button>Continue</ion-button>
         </div>
     </div>
@@ -93,7 +98,14 @@ export default {
 
 hr {
     background-color: black;
-    width: 250px;
+}
+
+p {
+    font-size: 25px;
+}
+
+.top-text {
+    padding-bottom: 35px;
 }
 
 .address-line {
@@ -102,5 +114,31 @@ hr {
 
 .map {
     height: 200px;
+}
+
+.map-container {
+    padding: 20px 0;
+}
+
+.option-divider {
+    height: 30px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    padding: 50px 0;
+}
+
+.or {
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: white;
+    z-index: 10;
+}
+
+.divide-line {
+    width: 100%;
+    align-self: center;
 }
 </style>
