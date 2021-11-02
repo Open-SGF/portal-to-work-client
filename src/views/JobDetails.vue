@@ -1,6 +1,7 @@
 <template>
     <Details
-        :pageTitle="pageTitle"
+        page-title="Job Details"
+        back-button-href="/jobs"
         :title="title"
         :company="company"
         :address="address"
@@ -20,7 +21,6 @@ export default {
     },
     data() {
         return {
-            pageTitle: 'pageTitle',
             title: 'Job Title',
             company: 'Job Company',
             address: 'Job Address',
