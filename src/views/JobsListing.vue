@@ -10,7 +10,13 @@
                 <ais-search-box />
                 <ais-hits>
                     <template v-slot:item="{ item }">
-                        <h2>{{ item.title }}</h2>
+                        <JobItem
+                            :key="item.number"
+                            :number="item.number"
+                            :title="item.title"
+                            :description="item.description"
+                        >
+                        </JobItem>
                     </template>
                 </ais-hits>
             </ais-instant-search>
@@ -24,18 +30,6 @@
                     @location-click="mapClick($event)"
                 ></Map>
             </div>
-            <ion-list class="ion-padding-horizontal">
-                <JobItem
-                    v-for="(item, index) in jobItems"
-                    :key="index"
-                    v-on:favorite-tapped="toggleFavorite(this.jobItems[index])"
-                    :isFavorite="this.jobItems[index].favorite"
-                    :number="item.number"
-                    :title="item.title"
-                    :description="item.description"
-                >
-                </JobItem>
-            </ion-list>
         </ion-content>
     </ion-page>
 </template>
@@ -80,14 +74,6 @@ export default {
         };
     },
     methods: {
-        toggleFavorite(key) {
-            key.favorite = !key.favorite;
-        },
-
-        handleChange(payload) {
-            this.searchValue = payload;
-        },
-
         mapClick(location) {
             console.log(location);
         },
@@ -115,24 +101,6 @@ export default {
             this.mapPins = [...mapPins];
             this.jobItems = [];
             this.jobItems = [...jobItems];
-        },
-
-        async queryAlgolia(queryString) {
-            const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
-            const index = client.initIndex('test_portal-to-work');
-
-            await index
-                .search(queryString, {
-                    hitsPerPage: 20,
-                    page: 0,
-                })
-                .then(({ hits }) => {
-                    this.captureHits(hits);
-                });
-        },
-
-        async handleClick() {
-            await this.queryAlgolia(this.searchValue);
         },
     },
 };
