@@ -18,9 +18,11 @@
     "@googlemaps/js-api-loader": "^1.12.6",
     "@ionic/vue": "^5.8.4",
     "@ionic/vue-router": "^5.8.4",
+    "algoliasearch": "^4.11.0",
     "core-js": "^3.18.3",
     "throttle-debounce": "^3.0.1",
     "vue": "^3.2.20",
+    "vue-instantsearch": "^4.1.1",
     "vue-router": "^4.0.12",
     "vue3-recaptcha-v2": "^1.0.0"
   },

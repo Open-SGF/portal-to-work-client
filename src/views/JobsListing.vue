@@ -6,11 +6,14 @@
             </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding-vertical" :fullscreen="true">
-            <SearchBar
-                :value="searchValue"
-                @handleChange="handleChange($event)"
-                @handleClick="handleClick($event)"
-            />
+            <ais-instant-search :search-client="searchClient" index-name="test_portal-to-work">
+                <ais-search-box />
+                <ais-hits>
+                    <template v-slot:item="{ item }">
+                        <h2>{{ item.title }}</h2>
+                    </template>
+                </ais-hits>
+            </ais-instant-search>
             <div class="ion-padding-horizontal">
                 <Map
                     class="job-listing-map"
@@ -21,8 +24,6 @@
                     @location-click="mapClick($event)"
                 ></Map>
             </div>
-            <!-- The map element -->
-            <!-- <GoogleMaps></GoogleMaps> -->
             <ion-list class="ion-padding-horizontal">
                 <JobItem
                     v-for="(item, index) in jobItems"
@@ -42,7 +43,6 @@
 <script>
 import JobItem from '../components/JobItem.vue';
 import Map from '../components/Map.vue';
-import SearchBar from '../components/SearchBar.vue';
 import algoliasearch from 'algoliasearch';
 import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
 
@@ -51,10 +51,10 @@ export default {
     components: {
         JobItem,
         Map,
-        SearchBar,
     },
     data() {
         return {
+            searchClient: algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY),
             searchValue: '',
             jobItems: [
                 {
