@@ -8,6 +8,16 @@
         <ion-content class="ion-padding-vertical" :fullscreen="true">
             <ais-instant-search :search-client="searchClient" index-name="test_portal-to-work">
                 <ais-search-box />
+                <div class="ion-padding-horizontal">
+                    <Map
+                        class="job-listing-map"
+                        :locations="[
+                            { latitude: 37.210388, longitude: -93.297256 },
+                            { latitude: 37.212388, longitude: -93.287256 },
+                        ]"
+                        @location-click="mapClick($event)"
+                    ></Map>
+                </div>
                 <ais-hits>
                     <template v-slot:item="{ item }">
                         <JobItem
@@ -20,16 +30,6 @@
                     </template>
                 </ais-hits>
             </ais-instant-search>
-            <div class="ion-padding-horizontal">
-                <Map
-                    class="job-listing-map"
-                    :locations="[
-                        { latitude: 37.210388, longitude: -93.297256 },
-                        { latitude: 37.212388, longitude: -93.287256 },
-                    ]"
-                    @location-click="mapClick($event)"
-                ></Map>
-            </div>
         </ion-content>
     </ion-page>
 </template>
