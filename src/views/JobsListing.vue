@@ -6,8 +6,7 @@
             </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding-vertical" :fullscreen="true">
-            <ais-instant-search :search-client="searchClient" index-name="test_portal-to-work">
-                <ais-search-box />
+            <SearchBar>
                 <div class="ion-padding-horizontal">
                     <Map
                         class="job-listing-map"
@@ -18,58 +17,23 @@
                         @location-click="mapClick($event)"
                     ></Map>
                 </div>
-                <ais-hits>
-                    <template v-slot:item="{ item }">
-                        <JobItem
-                            :key="item.number"
-                            :number="item.number"
-                            :title="item.title"
-                            :description="item.description"
-                        >
-                        </JobItem>
-                    </template>
-                </ais-hits>
-            </ais-instant-search>
+            </SearchBar>
         </ion-content>
     </ion-page>
 </template>
 
 <script>
-import JobItem from '../components/JobItem.vue';
+import SearchBar from '../components/SearchBar.vue';
 import Map from '../components/Map.vue';
-import algoliasearch from 'algoliasearch';
-import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
 
 export default {
     name: 'JobListing',
     components: {
-        JobItem,
+        SearchBar,
         Map,
     },
     data() {
         return {
-            searchClient: algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY),
-            searchValue: '',
-            jobItems: [
-                {
-                    number: 0,
-                    title: 'job 1',
-                    description: 'lorem ipsum',
-                    favorite: false,
-                },
-                {
-                    number: 1,
-                    title: 'job 2',
-                    description: 'lorem ipsum',
-                    favorite: false,
-                },
-                {
-                    number: 2,
-                    title: 'job 3',
-                    description: 'lorem ipsum',
-                    favorite: false,
-                },
-            ],
             mapPins: [],
         };
     },
@@ -99,8 +63,6 @@ export default {
 
             this.mapPins = new Array();
             this.mapPins = [...mapPins];
-            this.jobItems = [];
-            this.jobItems = [...jobItems];
         },
     },
 };

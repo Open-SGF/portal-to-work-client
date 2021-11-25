@@ -1,22 +1,28 @@
 <template>
-    <div class="search-bar ion-padding-horizontal">
-        <ion-searchbar
-            class="search"
-            :value="value"
-            @input="handleChange"
-            @click="handleClick"
-            debounce="1000"
-            placeholder="Search Jobs"
-        ></ion-searchbar>
-        <ion-fab-button class="ion-padding" router-link="/jobs/filters">
-            <ion-icon :icon="filterOutline"></ion-icon>
-        </ion-fab-button>
-    </div>
+    <ais-instant-search :search-client="searchClient" index-name="test_portal-to-work">
+        <ais-search-box />
+        <div class="ion-padding-horizontal">
+            <slot></slot>
+        </div>
+        <ais-hits>
+            <template v-slot:item="{ item }">
+                <JobItem
+                    :key="item.number"
+                    :number="item.number"
+                    :title="item.title"
+                    :description="item.description"
+                >
+                </JobItem>
+            </template>
+        </ais-hits>
+    </ais-instant-search>
 </template>
 
 <script>
-import { IonSearchbar, IonFabButton } from '@ionic/vue';
-import { filterOutline } from 'ionicons/icons';
+import algoliasearch from 'algoliasearch';
+import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
+import JobItem from '@/components/JobItem.vue';
+
 export default {
     props: {
         value: {
@@ -26,23 +32,13 @@ export default {
     },
 
     components: {
-        IonSearchbar,
-        IonFabButton,
+        JobItem,
     },
 
     data() {
         return {
-            filterOutline,
+            searchClient: algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY),
         };
-    },
-
-    methods: {
-        handleChange(e) {
-            this.$emit('handleChange', e.target.value);
-        },
-        handleClick(e) {
-            this.$emit('handleClick', e.target.value);
-        },
     },
 };
 </script>
