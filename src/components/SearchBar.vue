@@ -1,7 +1,7 @@
 <template>
     <ais-instant-search :search-client="searchClient" index-name="test_portal-to-work">
-        <ais-search-box class="search-bar">
-            <template v-slot="{ currentRefinement, isSearchStalled, refine }">
+        <ais-search-box class="search-bar ion-padding-horizontal">
+            <template v-slot="{ currentRefinement, refine }">
                 <ion-searchbar
                     type="search"
                     :value="currentRefinement"
@@ -10,25 +10,26 @@
                 <ion-fab-button class="ion-padding" router-link="/jobs/filters">
                     <ion-icon :icon="filterOutline"></ion-icon>
                 </ion-fab-button>
-                <span :hidden="!isSearchStalled">Loading...</span>
             </template>
         </ais-search-box>
         <div class="ion-padding-horizontal">
             <slot></slot>
         </div>
-        <ais-hits>
-            <template v-slot:item="{ item }">
+        <ais-hits class="ion-padding-horizontal">
+            <template v-slot="{ items, sendEvent }">
                 <JobItem
-                    :key="item.number"
-                    :number="item.number"
+                    v-for="item in items"
+                    :key="item.objectID"
+                    :number="item.objectID"
                     :title="item.title"
                     :description="item.description"
+                    v-on:favorite-tapped="toggleFavorite"
+                    @click="sendEvent('click', item, 'Item Added')"
                 >
                 </JobItem>
             </template>
         </ais-hits>
     </ais-instant-search>
-    <div class="search-bar ion-padding-horizontal"></div>
 </template>
 
 <script>

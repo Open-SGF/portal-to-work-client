@@ -1,6 +1,5 @@
 <template>
     <ion-item>
-        <ion-note slot="start">{{ number + 1 }}</ion-note>
         <ion-item-group>
             <ion-label>{{ title }}</ion-label>
             <ion-note class="description">{{ description }}</ion-note>
