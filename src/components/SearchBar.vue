@@ -21,6 +21,10 @@
                     v-for="item in items"
                     :key="parseInt(item.objectID)"
                     :number="parseInt(item.objectID)"
+                    :isFavorite="
+                        this.results.find((localItem) => localItem.objectID === item.objectID)
+                            .isFavorite
+                    "
                     :title="item.title"
                     :description="item.description"
                     v-on:favorite-tapped="toggleFavorite(item.objectID)"
@@ -53,6 +57,7 @@ export default {
             searchClient: algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY),
             filterOutline,
             results: [],
+            favoriteResults: [],
         };
     },
 
@@ -66,7 +71,10 @@ export default {
         toggleFavorite(id) {
             // Emit the result ID, find that result in state, alter it,
             // pass the alteration back down to that item in the list
-            console.log(id);
+            let result = this.results.find((item) => item.objectID === id);
+            console.log(this.results.find((item) => item.objectID === id).isFavorite);
+            result.isFavorite = !result.isFavorite;
+            console.log(this.results);
         },
     },
 };
