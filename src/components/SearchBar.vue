@@ -15,15 +15,15 @@
         <div class="ion-padding-horizontal">
             <slot></slot>
         </div>
-        <ais-hits class="ion-padding-horizontal">
+        <ais-hits class="ion-padding-horizontal" :transform-items="transformItems">
             <template v-slot="{ items, sendEvent }">
                 <JobItem
                     v-for="item in items"
-                    :key="item.objectID"
-                    :number="item.objectID"
+                    :key="parseInt(item.objectID)"
+                    :number="parseInt(item.objectID)"
                     :title="item.title"
                     :description="item.description"
-                    v-on:favorite-tapped="toggleFavorite"
+                    v-on:favorite-tapped="toggleFavorite(item.objectID)"
                     @click="sendEvent('click', item, 'Item Added')"
                 >
                 </JobItem>
@@ -39,6 +39,8 @@ import algoliasearch from 'algoliasearch';
 import { ALGOLIA_APP_ID, ALGOLIA_API_KEY } from '../config';
 import JobItem from '@/components/JobItem.vue';
 
+// TODO: store data of favorited jobs, refine styling of search page, integrate with google maps
+
 export default {
     components: {
         JobItem,
@@ -50,7 +52,22 @@ export default {
         return {
             searchClient: algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY),
             filterOutline,
+            results: [],
         };
+    },
+
+    methods: {
+        transformItems(items) {
+            items.forEach((item) => {
+                this.results.push(item);
+            });
+            return items;
+        },
+        toggleFavorite(id) {
+            // Emit the result ID, find that result in state, alter it,
+            // pass the alteration back down to that item in the list
+            console.log(id);
+        },
     },
 };
 </script>
