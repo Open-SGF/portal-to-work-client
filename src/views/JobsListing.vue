@@ -70,5 +70,6 @@ export default {
 <style scoped>
 .job-listing-map {
     height: 200px;
+    margin: 34px 0;
 }
 </style>

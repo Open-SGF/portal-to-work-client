@@ -1,5 +1,9 @@
 <template>
-    <ais-instant-search :search-client="searchClient" index-name="test_portal-to-work">
+    <ais-instant-search
+        :search-client="searchClient"
+        index-name="test_portal-to-work"
+        class="search-wrapper"
+    >
         <ais-search-box class="search-bar ion-padding-horizontal">
             <template v-slot="{ currentRefinement, refine }">
                 <ion-searchbar
@@ -88,9 +92,5 @@ export default {
 .search-bar {
     width: 100%;
     display: flex;
-}
-
-.search {
-    width: 100%;
 }
 </style>

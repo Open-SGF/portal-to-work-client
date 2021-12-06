@@ -1,7 +1,7 @@
 <template>
-    <ion-item>
+    <ion-item class="list-item">
         <ion-item-group>
-            <ion-label>{{ title }}</ion-label>
+            <ion-label class="title">{{ title }}</ion-label>
             <ion-note class="description">{{ description }}</ion-note>
         </ion-item-group>
         <ion-button fill="clear" shape="round" slot="end" @click="$emit('favorite-tapped')">
@@ -45,11 +45,31 @@ export default {
 </script>
 
 <style scoped>
+.list-item {
+    padding-top: 13px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #555555;
+    letter-spacing: 0;
+    line-height: 17px;
+}
+
 .description {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
+
+    padding-bottom: 19px;
+
+    font-family: Arial;
+    font-size: 12px;
+    color: #555555;
+    letter-spacing: 0;
+    line-height: 14px;
 }
 </style>
