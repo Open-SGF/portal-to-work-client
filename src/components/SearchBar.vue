@@ -21,13 +21,10 @@
                     v-for="item in items"
                     :key="parseInt(item.objectID)"
                     :number="parseInt(item.objectID)"
-                    :isFavorite="
-                        this.results.find((localItem) => localItem.objectID === item.objectID)
-                            .isFavorite
-                    "
+                    :isFavorite="searchFavoritesArray(item.objectID)"
                     :title="item.title"
                     :description="item.description"
-                    v-on:favorite-tapped="toggleFavorite(item.objectID)"
+                    v-on:favorite-tapped="toggleItemInFavoritesArray(item.objectID)"
                     @click="sendEvent('click', item, 'Item Added')"
                 >
                 </JobItem>
@@ -68,9 +65,10 @@ export default {
             });
             return items;
         },
-        toggleFavorite(id) {
+        toggleItemInFavoritesArray(id) {
             let result = this.results.find((item) => item.objectID === id);
-            if (result.isFavorite) {
+            let isFavorite = this.favoriteResults.includes(result);
+            if (isFavorite) {
                 const index = this.favoriteResults.indexOf(result);
                 if (index > -1) {
                     this.favoriteResults.splice(index, 1);
@@ -79,7 +77,9 @@ export default {
                 this.favoriteResults.push(result);
             }
             console.log(this.favoriteResults);
-            result.isFavorite = !result.isFavorite;
+        },
+        searchFavoritesArray(id) {
+            return this.favoriteResults.find((item) => item.objectID === id) ? true : false;
         },
     },
 };
