@@ -69,12 +69,17 @@ export default {
             return items;
         },
         toggleFavorite(id) {
-            // Emit the result ID, find that result in state, alter it,
-            // pass the alteration back down to that item in the list
             let result = this.results.find((item) => item.objectID === id);
-            console.log(this.results.find((item) => item.objectID === id).isFavorite);
+            if (result.isFavorite) {
+                const index = this.favoriteResults.indexOf(result);
+                if (index > -1) {
+                    this.favoriteResults.splice(index, 1);
+                }
+            } else {
+                this.favoriteResults.push(result);
+            }
+            console.log(this.favoriteResults);
             result.isFavorite = !result.isFavorite;
-            console.log(this.results);
         },
     },
 };
