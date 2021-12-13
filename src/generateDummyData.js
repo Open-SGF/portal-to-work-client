@@ -1,11 +1,15 @@
 // This bit of code will push data up to the Algolio Database
 // import generateDummyData from '../generateDummyData';
-// const dummyData = generateDummyData();
-// await index.saveObjects(dummyData, {
-//     autoGenerateObjectIDIfNotExist: true,
-// });
+// mounted() {
+//     const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY');
+//     const index = client.initIndex('test_portal-to-work');
+//     const dummyData = generateDummyData(1000);
+//     index.saveObjects(dummyData, {
+//         autoGenerateObjectIDIfNotExist: true,
+//     });
+// },
 
-const generateDummyData = () => {
+const generateDummyData = (entries) => {
     const jobsDB = [];
 
     const categories = [
@@ -72,7 +76,7 @@ const generateDummyData = () => {
         return start + preciseRound(addition, 6);
     };
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < entries; i++) {
         let title = `${titlePrefixes[generateIndex(titlePrefixes.length)]} ${
             titleRoles[generateIndex(titleRoles.length)]
         }`;

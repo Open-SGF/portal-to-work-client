@@ -22,9 +22,9 @@
         <ais-hits class="ion-padding-horizontal" :transform-items="transformItems">
             <template v-slot="{ items, sendEvent }">
                 <JobItem
-                    v-for="item in items"
+                    v-for="(item, index) in items"
                     :key="parseInt(item.objectID)"
-                    :number="parseInt(item.objectID)"
+                    :number="index"
                     :isFavorite="searchFavoritesArray(item.objectID)"
                     :title="item.title"
                     :description="item.description"
@@ -80,7 +80,6 @@ export default {
             } else {
                 this.favoriteResults.push(result);
             }
-            console.log(this.favoriteResults);
         },
         searchFavoritesArray(id) {
             return this.favoriteResults.find((item) => item.objectID === id) ? true : false;

@@ -1,5 +1,6 @@
 <template>
     <ion-item class="list-item">
+        <ion-label class="number">{{ number + 1 }}</ion-label>
         <ion-item-group>
             <ion-label class="title">{{ title }}</ion-label>
             <ion-note class="description">{{ description }}</ion-note>
@@ -50,7 +51,7 @@ export default {
 }
 
 .title {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 14px;
     color: #555555;
     letter-spacing: 0;
@@ -65,11 +66,21 @@ export default {
     -webkit-box-orient: vertical;
 
     padding-bottom: 19px;
+    padding-top: 7px;
 
     font-family: Arial;
     font-size: 12px;
     color: #555555;
     letter-spacing: 0;
     line-height: 14px;
+}
+
+.number {
+    width: 40px !important;
+    max-width: 40px;
+    min-width: 40px;
+    margin-bottom: 32px;
+
+    font-size: 16px;
 }
 </style>
