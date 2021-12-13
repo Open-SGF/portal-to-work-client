@@ -32,37 +32,9 @@ export default {
         SearchBar,
         Map,
     },
-    data() {
-        return {
-            mapPins: [],
-        };
-    },
     methods: {
         mapClick(location) {
             console.log(location);
-        },
-
-        captureHits(hits) {
-            let jobItems = [];
-            let mapPins = [];
-
-            for (let i = 0; i < hits.length; i++) {
-                let newItem = [];
-                let newPin = [];
-
-                newItem.number = i;
-                newItem.title = hits[i].title;
-                newItem.description = hits[i].description;
-                newItem.favorite = false;
-                newPin.latitude = hits[i].location.lat;
-                newPin.longitute = hits[i].location.long;
-
-                jobItems.push(newItem);
-                mapPins.push(newPin);
-            }
-
-            this.mapPins = new Array();
-            this.mapPins = [...mapPins];
         },
     },
 };

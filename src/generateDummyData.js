@@ -1,5 +1,6 @@
 // This bit of code will push data up to the Algolio Database
 // import generateDummyData from '../generateDummyData';
+// Stick this in a component to run on load:
 // mounted() {
 //     const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY');
 //     const index = client.initIndex('test_portal-to-work');
