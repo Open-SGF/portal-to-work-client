@@ -12,6 +12,25 @@
     -   `git clone git@github.com:Open-SGF/portal-to-work-client.git` if using ssh authentication
 -   Install dependencies with npm
     -   `npm install`
+-   Aquire API keys
+    -   Get a reCaptcha key
+        -   Go to https://www.google.com/recaptcha/admin/create#whyrecaptcha
+        -   Sign up for a reCaptcha v2 API key
+        -   Set domain to localhost
+        -   Add VUE_APP_GOOGLE_RECAPTCHA_SITE_KEY="" to .env and paste the API key between the quotes
+    -   Get a Google Maps API key -
+        -   Go to https://console.cloud.google.com/
+        -   Click on the Navigation menu --> API's and Services --> Library
+        -   Search Maps Javascript API and click enable
+        -   Search Places API and click enable
+        -   APIs & Services ==> Credentials ==> copy API key
+        -   Click 'edit API key'
+        -   Under website restrictions add localhost
+        -   Under API restrictions select 'Restrict key' and select maps javascript API and places API
+        -   Click the blue save button at the bottom
+        -   Copy the API from the credentials page
+        -   Paste the API key in the .env folder within the quotes of VUE_APP_GOOGLE_MAPS_API_KEY=""
+    -   Contact Ethan Zitting for the Algolia Key
 -   Run the project
     -   `npm run serve`
     -   Open the url this command provides in the browser
