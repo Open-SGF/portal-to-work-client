@@ -45,6 +45,8 @@ export default {
 }
 
 .date-wrapper {
-    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>
