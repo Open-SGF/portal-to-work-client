@@ -1,9 +1,9 @@
 <template>
-    <ion-item>
-        <ion-note slot="start">{{ this.number }}</ion-note>
+    <ion-item class="list-item">
+        <ion-label class="number">{{ number + 1 }}</ion-label>
         <ion-item-group>
-            <ion-label>Patient Transporter</ion-label>
-            <ion-note>Test</ion-note>
+            <ion-label class="title">{{ title }}</ion-label>
+            <ion-note class="description">{{ description }}</ion-note>
         </ion-item-group>
         <ion-button fill="clear" shape="round" slot="end" @click="$emit('favorite-tapped')">
             <ion-icon
@@ -44,3 +44,43 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.list-item {
+    padding-top: 13px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555555;
+    letter-spacing: 0;
+    line-height: 17px;
+}
+
+.description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
+    padding-bottom: 19px;
+    padding-top: 7px;
+
+    font-family: Arial;
+    font-size: 12px;
+    color: #555555;
+    letter-spacing: 0;
+    line-height: 14px;
+}
+
+.number {
+    width: 40px !important;
+    max-width: 40px;
+    min-width: 40px;
+    margin-bottom: 32px;
+
+    font-size: 16px;
+}
+</style>

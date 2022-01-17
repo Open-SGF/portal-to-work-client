@@ -30,6 +30,7 @@
         -   Click the blue save button at the bottom
         -   Copy the API from the credentials page
         -   Paste the API key in the .env folder within the quotes of VUE_APP_GOOGLE_MAPS_API_KEY=""
+    -   Contact Ethan Zitting for the Algolia Key
 -   Run the project
     -   `npm run serve`
     -   Open the url this command provides in the browser

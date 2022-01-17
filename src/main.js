@@ -17,8 +17,10 @@ import '@ionic/vue/css/text-alignment.css';
 import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
+
 import { RECAPTCHA_SITE_KEY } from './config.js';
 import VueRecaptcha from 'vue3-recaptcha-v2';
+import InstantSearch from 'vue-instantsearch/vue3/es';
 
 import { registerGlobalCompoents } from './global-components';
 import App from './App.vue';
@@ -33,7 +35,8 @@ const app = createApp(App)
         siteKey: RECAPTCHA_SITE_KEY,
         alterDomain: false, // default: false
     })
-    .use(router);
+    .use(router)
+    .use(InstantSearch);
 
 registerGlobalCompoents(app);
 
