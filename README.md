@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
--   Node 16 or greater
--   npm 7 or greater
+-   Node 16.x.x
+-   npm 8.x.x
 
 ## Setup
 
