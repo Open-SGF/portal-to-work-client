@@ -71,6 +71,18 @@ export default {
         updateMapMarkers(locations) {
             const { google, map } = this.$options;
 
+            const icons = {
+                home: {
+                    icon: 'public/assets/map-home-green.svg',
+                },
+                marker1: {
+                    icon: 'public/assets/map-pin-green.svg',
+                },
+                marker2: {
+                    icon: 'public/assets/map-pin-blue.svg',
+                },
+            };
+
             if (google === null || map === null) {
                 return;
             }
@@ -82,6 +94,8 @@ export default {
             for (const location of locations) {
                 const marker = new google.maps.Marker({
                     position: { lat: location.latitude, lng: location.longitude },
+                    type: 'home',
+                    icon: icons[0],
                     map,
                 });
 
