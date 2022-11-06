@@ -16,8 +16,11 @@
     -   Get a reCaptcha key
         -   Go to https://www.google.com/recaptcha/admin/create#whyrecaptcha
         -   Sign up for a reCaptcha v2 API key
-        -   Set domain to localhost
-        -   Add VUE_APP_GOOGLE_RECAPTCHA_SITE_KEY="" to .env and paste the API key between the quotes
+        -   Set domain to 'localhost'
+        -   Copy the generated site and secret keys to your .env file under 
+            the following keys:
+            - `VUE_APP_GOOGLE_RECAPTCHA_SITE_KEY`
+            - `VUE_APP_GOOGLE_RECAPTCHA_SECRET_KEY`
     -   Get a Google Maps API key -
         -   Go to https://console.cloud.google.com/
         -   Click on the Navigation menu --> API's and Services --> Library
